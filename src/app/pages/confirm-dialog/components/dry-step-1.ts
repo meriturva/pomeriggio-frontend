@@ -36,8 +36,7 @@ import { EventsService } from '../../event.service';
 export class DryStep1Page {
     private readonly _eventsService = inject(EventsService);
 
-    protected eventServiceCode = `
-        import { EventEmitter, Injectable } from "@angular/core";
+    protected eventServiceCode = `import { EventEmitter, Injectable } from "@angular/core";
 
         @Injectable({ providedIn: 'root' })
         export class EventsService {
@@ -48,8 +47,7 @@ export class DryStep1Page {
         }
         `;
 
-    protected appComponentCode = `
-        private readonly _eventsService = inject(EventsService);
+    protected appComponentCode = `private readonly _eventsService = inject(EventsService);
 
         constructor() {
             this._eventsService.onShowConfirmDialogNotWorking.pipe(takeUntilDestroyed()).subscribe((message) => {
@@ -68,8 +66,7 @@ export class DryStep1Page {
         }
         `;
 
-    protected tsCode = `
-        public onAskConfirmation() {
+    protected tsCode = `public onAskConfirmation() {
             // Show confirmation dialog using the event service
             this._eventsService.onShowConfirmDialogNotWorking.emit("Are you sure that you want to proceed?");
         }

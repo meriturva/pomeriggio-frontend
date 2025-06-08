@@ -32,8 +32,7 @@ import { delay, finalize, of, tap } from 'rxjs';
 export class WrongPage {
     protected waiterVisible = signal(false);
 
-    protected templateCode = `
-        <p-dialog header="Loading" [modal]="true"  [closable]="false" [visible]="waiterVisible()" class="text-center">
+    protected templateCode = `<p-dialog header="Loading" [modal]="true"  [closable]="false" [visible]="waiterVisible()" class="text-center">
             <p>Sto caricando tanti dati!</p>
             <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
         </p-dialog>

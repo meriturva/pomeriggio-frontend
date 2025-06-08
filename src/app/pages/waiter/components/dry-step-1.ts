@@ -40,51 +40,48 @@ import { EventsService } from '../../event.service';
 export class DryStep1Page {
     private readonly _eventsService = inject(EventsService);
 
-    protected eventServiceCode = `
-        import { EventEmitter, Injectable } from "@angular/core";
+    protected eventServiceCode = `import { EventEmitter, Injectable } from "@angular/core";
 
-        @Injectable({ providedIn: 'root' })
-        export class EventsService {
-            /**
-             * Event to show a waiter dialog.
-             */
-          public onShowWaiter: EventEmitter<string | undefined> = new EventEmitter();
+@Injectable({ providedIn: 'root' })
+export class EventsService {
+    /**
+     * Event to show a waiter dialog.
+     */
+    public onShowWaiter: EventEmitter<void> = new EventEmitter();
 
-            /**
-             * Event to close a waiter dialog.
-             */
-          public onCloseWaiter: EventEmitter<string | undefined> = new EventEmitter();
-        }
-        `;
+    /**
+     * Event to close a waiter dialog.
+     */
+    public onCloseWaiter: EventEmitter<void> = new EventEmitter();
+}
+`;
 
-    protected appComponentCode = `
-        private readonly _eventsService = inject(EventsService);
-        protected waiterVisible = signal(false);
+    protected appComponentCode = `private readonly _eventsService = inject(EventsService);
+protected waiterVisible = signal(false);
 
-        constructor() {
-            this._eventsService.onShowWaiter.pipe(takeUntilDestroyed()).subscribe(() => {
-                this.waiterVisible.set(true);
-            });
+constructor() {
+    this._eventsService.onShowWaiter.pipe(takeUntilDestroyed()).subscribe(() => {
+        this.waiterVisible.set(true);
+    });
 
-            this._eventsService.onCloseWaiter.pipe(takeUntilDestroyed()).subscribe(() => {
-                this.waiterVisible.set(false);
-            });
-        }
-        `;
+    this._eventsService.onCloseWaiter.pipe(takeUntilDestroyed()).subscribe(() => {
+        this.waiterVisible.set(false);
+    });
+}
+`;
 
-    protected tsCode = `
-        public onLoadFromService() {
-            // Show waiter using the event service
-            this._eventsService.onShowWaiter.emit();
-            of([1, 2, 3]).pipe(
-                delay(2000),
-                finalize(() => {
-                    // Hide waiter using the event service
-                    this._eventsService.onCloseWaiter.emit();
-                })
-            ).subscribe();
-        }
-        `;
+    protected tsCode = `public onLoadFromService() {
+    // Show waiter using the event service
+    this._eventsService.onShowWaiter.emit();
+    of([1, 2, 3]).pipe(
+        delay(2000),
+        finalize(() => {
+            // Hide waiter using the event service
+            this._eventsService.onCloseWaiter.emit();
+        })
+    ).subscribe();
+}
+`;
 
     public onLoadFromService() {
         // Show waiter using the event service

@@ -34,8 +34,7 @@ import { BasePage } from '../../base-page';
 })
 export class DryStep2Page extends BasePage {
 
-    protected basePageCode = `
-        @Directive({
+    protected basePageCode = `@Directive({
             selector: 'app-base-page'
         })
         export class BasePage {
@@ -51,8 +50,7 @@ export class DryStep2Page extends BasePage {
         }
         `;
 
-    protected tsCode = `
-        public onLoadFromService() {
+    protected tsCode = `public onLoadFromService() {
             // Show waiter using the event service
             this.showWaiter();
             of([1, 2, 3]).pipe(

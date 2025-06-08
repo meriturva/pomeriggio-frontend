@@ -4,6 +4,10 @@
 @use 'primeicons/primeicons.css';
 @use 'highlight.js/styles/github.css';
 
+html {
+  font-size: 1rem;
+}
+
 pre {
   display: flex;
   margin-top: 10px;

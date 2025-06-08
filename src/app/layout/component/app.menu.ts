@@ -67,8 +67,9 @@ export class AppMenu {
             {
                 label: 'Deploy', routerLink: ['/deploy'],
                 items: [
-                    { label: 'Standard', icon: 'pi pi-fw pi-info-circle', routerLink: ['/deploy/standard']},
-                    { label: 'Error handler', icon: 'pi pi-fw pi-info-circle', routerLink: ['/deploy/error-handler']}
+                    { label: 'Standard', icon: 'pi pi-fw pi-server', routerLink: ['/deploy/standard']},
+                    { label: 'Error handler', icon: 'pi pi-fw pi-cloud', routerLink: ['/deploy/error-handler']},
+                    { label: 'Service worker', icon: 'pi pi-fw pi-clock', routerLink: ['/deploy/service-worker']}
                 ]
             }
         ];

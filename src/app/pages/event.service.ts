@@ -6,12 +6,12 @@ export class EventsService {
     /**
      * Event to show a waiter dialog.
      */
-    public onShowWaiter: EventEmitter<string | undefined> = new EventEmitter();
+    public onShowWaiter: EventEmitter<void> = new EventEmitter();
 
     /**
      * Event to close a waiter dialog.
      */
-    public onCloseWaiter: EventEmitter<string | undefined> = new EventEmitter();
+    public onCloseWaiter: EventEmitter<void> = new EventEmitter();
 
     /**
      * Event to show a confirmation dialog.

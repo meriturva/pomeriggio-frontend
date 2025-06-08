@@ -10,7 +10,7 @@ import { Component } from '@angular/core';
                </div>
 
                <div class="card">
-                Dopo pochi minuti otteniamo questi errori:
+                <p>Dopo pochi minuti otteniamo questi errori:</p>
                 <img src="/img/sentry-chunk-error.png" alt="Sentry" class="m-4">
                </div>
                `

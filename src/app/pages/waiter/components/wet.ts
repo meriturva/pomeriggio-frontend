@@ -35,8 +35,7 @@ import { DialogModule } from 'primeng/dialog';
 export class WetPage {
     protected waiterVisible = signal(false);
 
-    protected templateCode1 = `
-        <p-dialog header="Loading" [modal]="true"  [closable]="false" [visible]="waiterVisible()" class="text-center">
+    protected templateCode1 = `<p-dialog header="Loading" [modal]="true"  [closable]="false" [visible]="waiterVisible()" class="text-center">
             <p>Sto caricando tanti dati!</p>
             <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
         </p-dialog>
@@ -58,8 +57,7 @@ export class WetPage {
         }
     }`;
 
-    protected templateCode2 = `
-        <p-dialog header="Loading" [modal]="true"  [closable]="false" [visible]="waiterVisible()" class="text-center">
+    protected templateCode2 = `<p-dialog header="Loading" [modal]="true"  [closable]="false" [visible]="waiterVisible()" class="text-center">
             <p>Sto caricando tanti dati!</p>
             <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
         </p-dialog>

@@ -24,8 +24,7 @@ import { BasePage } from '../../base-page';
 })
 export class DryStep4Page extends BasePage {
 
-    protected tsCode = `
-        public onAskConfirmation() {
+    protected tsCode = `public onAskConfirmation() {
             this.showConfirmDialog("Are you sure that you want to proceed?").pipe(
                 concatMap(() => of([1,2,3]).pipe(
                     delay(1000),

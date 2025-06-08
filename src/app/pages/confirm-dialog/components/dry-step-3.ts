@@ -35,8 +35,7 @@ import { BasePage } from '../../base-page';
 })
 export class DryStep3Page extends BasePage {
 
-    protected basePageCode = `
-        /**
+    protected basePageCode = `/**
          * Show confirmation dialog
          * @param message Message to show
          * @returns Observable of boolean (true accepted - false rejected)
@@ -48,8 +47,7 @@ export class DryStep3Page extends BasePage {
         }
         `;
 
-    protected appComponentCode = `
-        private readonly _eventsService = inject(EventsService);
+    protected appComponentCode = `private readonly _eventsService = inject(EventsService);
 
         constructor() {
             this._eventsService.onShowConfirmDialog.pipe(takeUntilDestroyed()).subscribe((options) => {
@@ -72,8 +70,7 @@ export class DryStep3Page extends BasePage {
         }
         `;
 
-    protected tsCode = `
-        public onAskConfirmation() {
+    protected tsCode = `public onAskConfirmation() {
             this.showConfirmDialog("Are you sure that you want to proceed?").subscribe((value) => {
                 console.log("User response:", value);
             });

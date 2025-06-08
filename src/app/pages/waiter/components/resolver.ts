@@ -27,16 +27,14 @@ import { BasePage } from '../../base-page';
 })
 export class ResolverPage extends BasePage {
 
-    protected routerCode = `
-        const dataResolverFn: ResolveFn<number> = () => of(Math.random()).pipe(delay(3000))
+    protected routerCode = `const dataResolverFn: ResolveFn<number> = () => of(Math.random()).pipe(delay(3000))
 
         export default [
             { path: 'resolver', component: ResolverPage, resolve: { data: dataResolverFn } },
         ] as Routes;
     `;
 
-    protected appComponentCode = `
-        this._router.events.pipe(takeUntilDestroyed()) .subscribe((routerEvent) => {
+    protected appComponentCode = `this._router.events.pipe(takeUntilDestroyed()) .subscribe((routerEvent) => {
             // Note: https://angular.dev/api/router/ResolveStart
             if (routerEvent instanceof ResolveStart) {
                 this._eventsService.onShowWaiter.emit();

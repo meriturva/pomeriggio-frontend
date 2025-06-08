@@ -37,8 +37,7 @@ import { BasePage } from '../../base-page';
 })
 export class DryStep3Page extends BasePage {
 
-    protected newOperator = `
-        /**
+    protected newOperator = `/**
          * Utility operator to start with a tap callback before switching to the source observable.
          * This is useful for triggering side effects before the main observable logic.
          *
@@ -55,8 +54,7 @@ export class DryStep3Page extends BasePage {
         }
     `;
 
-    protected basePageCode = `
-        /**
+    protected basePageCode = `/**
         * Show automagically the waiter
         * @returns An operator function that can be used in an observable chain to show and hide a waiter dialog.
         */
@@ -68,8 +66,7 @@ export class DryStep3Page extends BasePage {
         }
         `;
 
-    protected tsCode = `
-        public onLoadFromService() {
+    protected tsCode = `public onLoadFromService() {
             of([1, 2, 3]).pipe(
                 delay(2000),
                 this.autoWaiter()

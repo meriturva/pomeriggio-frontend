@@ -36,8 +36,7 @@ import { BasePage } from '../../base-page';
 })
 export class DryStep2Page extends BasePage {
 
-    protected basePageCode = `
-        @Directive({
+    protected basePageCode = `@Directive({
             selector: 'app-base-page'
         })
         export class BasePage {
@@ -52,8 +51,7 @@ export class DryStep2Page extends BasePage {
         }
         `;
 
-    protected tsCode = `
-        public onAskConfirmation() {
+    protected tsCode = `public onAskConfirmation() {
             this.showConfirmDialogNotWorking("Are you sure that you want to proceed?");
         }
         `;
