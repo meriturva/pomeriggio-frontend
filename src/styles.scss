@@ -1,0 +1,63 @@
+/* You can add global styles to this file, and also import other style files */
+@use './tailwind.css';
+@use './assets/layout/layout.scss';
+@use 'primeicons/primeicons.css';
+@use 'highlight.js/styles/github.css';
+
+pre {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  word-wrap: break-word;
+  border: 1px solid #dcdcdc;
+}
+
+code {
+  flex: 1;
+  line-height: 1.8em;
+  font-size: 14px;
+  min-height: 100%;
+  padding: 1em 1.2em;
+  overflow-x: unset;
+  overflow-y: unset;
+}
+
+.hljs.hljs-line-numbers {
+  padding: 0 !important;
+}
+
+pre .hljs {
+  border: none;
+  transition: border ease 1s;
+}
+
+.hljs-ln {
+  tr {
+    &:first-child td {
+      padding-top: 10px !important;
+    }
+
+    &:last-child td {
+      padding-bottom: 10px !important;
+    }
+  }
+}
+
+/* for block of numbers */
+td.hljs-ln-numbers {
+  position: sticky;
+  left: 0;
+  user-select: none;
+  text-align: center;
+  color: #3f3f3f6b;
+  border-right: 1px solid #cccccc1c;
+  vertical-align: top;
+  padding-right: 10px !important;
+  padding-left: 10px !important;
+}
+
+/* for block of code */
+td.hljs-ln-code {
+  padding-left: 10px !important;
+}
+
