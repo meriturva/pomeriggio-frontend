@@ -9,7 +9,7 @@ import { BasePage } from '../../base-page';
     selector: 'app-waiter-dry-step-3',
     imports: [Highlight, HighlightLineNumbers, ButtonModule],
     template: `<div class="card">
-                    <div class="font-semibold text-xl">Definiamo un nuovo operatore rxjs?</div>
+                    <div class="font-semibold text-xl">Definiamo un nuovo operatore rxjs</div>
 
                     <div class="font-semibold text-l mt-2">Nuovo operatore:</div>
                     <pre>
@@ -38,41 +38,41 @@ import { BasePage } from '../../base-page';
 export class DryStep3Page extends BasePage {
 
     protected newOperator = `/**
-         * Utility operator to start with a tap callback before switching to the source observable.
-         * This is useful for triggering side effects before the main observable logic.
-         *
-         * @param callback - The function to call before subscribing to the source observable.
-         * @returns An observable that emits the source observable after executing the tap callback.
-         */
-        export function startWithTap<T>(callback: () => void) {
-            return (source: Observable<T>) =>
-                // Emit an empty object to trigger the tap callback
-                of({}).pipe(
-                    tap(callback),
-                    // Switch to the original source observable
-                    switchMap((o) => source));
-        }
-    `;
+* Utility operator to start with a tap callback before switching to the source observable.
+* This is useful for triggering side effects before the main observable logic.
+*
+* @param callback - The function to call before subscribing to the source observable.
+* @returns An observable that emits the source observable after executing the tap callback.
+*/
+export function startWithTap<T>(callback: () => void) {
+    return (source: Observable<T>) =>
+        // Emit an empty object to trigger the tap callback
+        of({}).pipe(
+            tap(callback),
+            // Switch to the original source observable
+            switchMap((o) => source));
+}
+`;
 
     protected basePageCode = `/**
-        * Show automagically the waiter
-        * @returns An operator function that can be used in an observable chain to show and hide a waiter dialog.
-        */
-        public autoWaiter<T>(): MonoTypeOperatorFunction<T> {
-            return pipe(
-                startWithTap(() => { this.showWaiter(); }),
-                finalize(() => { this.closeWaiter() })
-            );
-        }
-        `;
+* Show automagically the waiter
+* @returns An operator function that can be used in an observable chain to show and hide a waiter dialog.
+*/
+public autoWaiter<T>(): MonoTypeOperatorFunction<T> {
+    return pipe(
+        startWithTap(() => { this.showWaiter(); }),
+        finalize(() => { this.closeWaiter() })
+    );
+}
+`;
 
     protected tsCode = `public onLoadFromService() {
-            of([1, 2, 3]).pipe(
-                delay(2000),
-                this.autoWaiter()
-            ).subscribe();
-        }
-        `;
+    of([1, 2, 3]).pipe(
+        delay(2000),
+        this.autoWaiter()
+    ).subscribe();
+}
+`;
 
     public onLoadFromService() {
         of([1, 2, 3]).pipe(

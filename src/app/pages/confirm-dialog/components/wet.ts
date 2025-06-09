@@ -44,34 +44,34 @@ export class WetPage {
     protected templateCode1 = `<p-confirmdialog />`;
 
     protected tsCode1 = `export class MyComponent1 {
-        this._confirmationService.confirm({
-            header: 'Confirmation',
-            icon: 'pi pi-exclamation-triangle',
-            message: 'Are you sure that you want to proceed?',
-            accept: () => {
-                console.log("Accepted");
-            },
-            reject: () => {
-                console.log("Rejected");
-            }
-        });
-    }`;
+    this._confirmationService.confirm({
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        message: 'Are you sure that you want to proceed?',
+        accept: () => {
+            console.log("Accepted");
+        },
+        reject: () => {
+            console.log("Rejected");
+        }
+    });
+}`;
 
     protected templateCode2 = `<p-confirmdialog />`;
 
     protected tsCode2 = `export class MyComponent2 {
-       this._confirmationService.confirm({
-            header: 'Confirmation',
-            icon: 'pi pi-exclamation-triangle',
-            message: 'Are you sure that you want to proceed?',
-            accept: () => {
-                console.log("Accepted");
-            },
-            reject: () => {
-                console.log("Rejected");
-            }
-        });
-    }`;
+    this._confirmationService.confirm({
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        message: 'Are you sure that you want to proceed?',
+        accept: () => {
+            console.log("Accepted");
+        },
+        reject: () => {
+            console.log("Rejected");
+        }
+    });
+}`;
 
     public onAskConfirmation() {
         this._confirmationService.confirm({

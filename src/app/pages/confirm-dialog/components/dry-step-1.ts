@@ -38,39 +38,39 @@ export class DryStep1Page {
 
     protected eventServiceCode = `import { EventEmitter, Injectable } from "@angular/core";
 
-        @Injectable({ providedIn: 'root' })
-        export class EventsService {
-            /**
-             * Event to show a confirmation dialog.
-             */
-            public onShowConfirmDialogNotWorking: EventEmitter<string | undefined> = new EventEmitter();
-        }
-        `;
+@Injectable({ providedIn: 'root' })
+export class EventsService {
+    /**
+     * Event to show a confirmation dialog.
+     */
+    public onShowConfirmDialogNotWorking: EventEmitter<string | undefined> = new EventEmitter();
+}
+`;
 
     protected appComponentCode = `private readonly _eventsService = inject(EventsService);
 
-        constructor() {
-            this._eventsService.onShowConfirmDialogNotWorking.pipe(takeUntilDestroyed()).subscribe((message) => {
-                this._confirmationService.confirm({
-                    header: 'Confirmation',
-                    icon: 'pi pi-exclamation-triangle',
-                    message: message,
-                    accept: () => {
-                        console.log("Accepted");
-                    },
-                    reject: () => {
-                        console.log("Rejected");
-                    }
-                })
-            });
-        }
-        `;
+constructor() {
+    this._eventsService.onShowConfirmDialogNotWorking.pipe(takeUntilDestroyed()).subscribe((message) => {
+        this._confirmationService.confirm({
+            header: 'Confirmation',
+            icon: 'pi pi-exclamation-triangle',
+            message: message,
+            accept: () => {
+                console.log("Accepted");
+            },
+            reject: () => {
+                console.log("Rejected");
+            }
+        })
+    });
+}
+`;
 
     protected tsCode = `public onAskConfirmation() {
-            // Show confirmation dialog using the event service
-            this._eventsService.onShowConfirmDialogNotWorking.emit("Are you sure that you want to proceed?");
-        }
-        `;
+    // Show confirmation dialog using the event service
+    this._eventsService.onShowConfirmDialogNotWorking.emit("Are you sure that you want to proceed?");
+}
+`;
 
     public onAskConfirmation() {
         // Show confirmation dialog using the event service

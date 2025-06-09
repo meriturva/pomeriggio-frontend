@@ -35,33 +35,33 @@ import { BasePage } from '../../base-page';
 export class DryStep2Page extends BasePage {
 
     protected basePageCode = `@Directive({
-            selector: 'app-base-page'
-        })
-        export class BasePage {
-            private readonly _eventsService = inject(EventsService);
+    selector: 'app-base-page'
+})
+export class BasePage {
+    private readonly _eventsService = inject(EventsService);
 
-            public showWaiter() {
-                this._eventsService.onShowWaiter.emit();
-            }
+    public showWaiter() {
+        this._eventsService.onShowWaiter.emit();
+    }
 
-            public closeWaiter() {
-                this._eventsService.onCloseWaiter.emit();
-            }
-        }
-        `;
+    public closeWaiter() {
+        this._eventsService.onCloseWaiter.emit();
+    }
+}
+`;
 
     protected tsCode = `public onLoadFromService() {
-            // Show waiter using the event service
-            this.showWaiter();
-            of([1, 2, 3]).pipe(
-                delay(2000),
-                finalize(() => {
-                    // Hide waiter using the event service
-                    this.closeWaiter();
-                })
-            ).subscribe();
-        }
-        `;
+    // Show waiter using the event service
+    this.showWaiter();
+    of([1, 2, 3]).pipe(
+        delay(2000),
+        finalize(() => {
+            // Hide waiter using the event service
+            this.closeWaiter();
+        })
+    ).subscribe();
+}
+`;
 
     public onLoadFromService() {
         // Show waiter using the event service

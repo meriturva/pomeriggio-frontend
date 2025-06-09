@@ -37,24 +37,24 @@ import { BasePage } from '../../base-page';
 export class DryStep2Page extends BasePage {
 
     protected basePageCode = `@Directive({
-            selector: 'app-base-page'
-        })
-        export class BasePage {
-            private readonly _eventsService = inject(EventsService);
+    selector: 'app-base-page'
+})
+export class BasePage {
+    private readonly _eventsService = inject(EventsService);
 
-            /**
-             * Show confirmation dialog
-             */
-            public showConfirmDialogNotWorking(message: string) {
-                this._eventsService.onShowConfirmDialogNotWorking.emit(message)
-            }
-        }
-        `;
+    /**
+     * Show confirmation dialog
+     */
+    public showConfirmDialogNotWorking(message: string) {
+        this._eventsService.onShowConfirmDialogNotWorking.emit(message)
+    }
+}
+`;
 
     protected tsCode = `public onAskConfirmation() {
-            this.showConfirmDialogNotWorking("Are you sure that you want to proceed?");
-        }
-        `;
+    this.showConfirmDialogNotWorking("Are you sure that you want to proceed?");
+}
+`;
 
     public onAskConfirmation() {
         this.showConfirmDialogNotWorking("Are you sure that you want to proceed?");

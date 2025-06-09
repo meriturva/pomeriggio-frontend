@@ -29,24 +29,24 @@ export class ResolverPage extends BasePage {
 
     protected routerCode = `const dataResolverFn: ResolveFn<number> = () => of(Math.random()).pipe(delay(3000))
 
-        export default [
-            { path: 'resolver', component: ResolverPage, resolve: { data: dataResolverFn } },
-        ] as Routes;
-    `;
+export default [
+    { path: 'resolver', component: ResolverPage, resolve: { data: dataResolverFn } },
+] as Routes;
+`;
 
-    protected appComponentCode = `this._router.events.pipe(takeUntilDestroyed()) .subscribe((routerEvent) => {
-            // Note: https://angular.dev/api/router/ResolveStart
-            if (routerEvent instanceof ResolveStart) {
-                this._eventsService.onShowWaiter.emit();
-            }
+    protected appComponentCode = `this._router.events.pipe(takeUntilDestroyed()).subscribe((routerEvent) => {
+    // Note: https://angular.dev/api/router/ResolveStart
+    if (routerEvent instanceof ResolveStart) {
+        this._eventsService.onShowWaiter.emit();
+    }
 
-            if (routerEvent instanceof NavigationEnd ||
-                routerEvent instanceof NavigationCancel ||
-                routerEvent instanceof NavigationError) {
-                this._eventsService.onCloseWaiter.emit();
-            }
-        });
-        `;
+    if (routerEvent instanceof NavigationEnd ||
+        routerEvent instanceof NavigationCancel ||
+        routerEvent instanceof NavigationError) {
+        this._eventsService.onCloseWaiter.emit();
+    }
+});
+`;
 
     constructor(route: ActivatedRoute) {
         super();
