@@ -33,16 +33,17 @@ export class WrongPage {
     protected waiterVisible = signal(false);
 
     protected templateCode = `<p-dialog header="Loading" [modal]="true"  [closable]="false" [visible]="waiterVisible()" class="text-center">
-            <p>Sto caricando tanti dati!</p>
-            <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
-        </p-dialog>
-        <p-button raised (click)="onLoadFromService()">Load</p-button>
-        `;
+    <p>Sto caricando tanti dati!</p>
+    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+</p-dialog>
+<p-button raised (click)="onLoadFromService()">Load</p-button>
+`;
 
     protected tsCode = `export class MyComponent {
        public onLoadFromService() {
         // Show waiter
         this.waiterVisible.set(true);
+        // Simulazione chiamata al backend
         of([1, 2, 3]).pipe(
             delay(2000)
         ).subscribe(() => {
@@ -68,7 +69,7 @@ export class WrongPage {
         this.waiterVisible.set(true);
         of([1, 2, 3]).pipe(
             delay(2000),
-            tap(() => {throw new Error('Simulated error');})
+            tap(() => { throw new Error('Simulated error'); })
         ).subscribe(() => {
             // Done
             this.waiterVisible.set(false);
@@ -80,7 +81,7 @@ export class WrongPage {
         this.waiterVisible.set(true);
         of([1, 2, 3]).pipe(
             delay(2000),
-            tap(() => {throw new Error('Simulated error');}),
+            tap(() => { throw new Error('Simulated error'); }),
             finalize(() => {
                 // Hide waiter
                 this.waiterVisible.set(false);
