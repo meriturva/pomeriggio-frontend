@@ -11,6 +11,7 @@ import { Component } from '@angular/core';
 
                <div class="card">
                 <p>Dopo pochi minuti otteniamo questi errori:</p>
+                <a href="https://gruppo-raffaello.sentry.io/issues/6152215421/?project=4505126213976064&query=is%3Aunresolved&referrer=issue-stream&stream_index=6" target="_blank">Sentry error</a>
                 <img src="/img/sentry-chunk-error.png" alt="Sentry" class="m-4">
                </div>
                `

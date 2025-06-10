@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
     selector: 'app-dynamic-routes-iframe',
     template: `
-                <h1>IFramePage angular per visualizzare un iframe dinamico.</h1>
+                <h2>IFramePage per visualizzare url da <em>activatedRoute.snapshot.data['url']</em>.</h2>
                 @if(url()){
                     <iframe [src]="url()" style="width: 100vw;height: 100vw;max-width: 100%;"></iframe>
                 }

@@ -27,7 +27,7 @@ import { BasePage } from '../../base-page';
                         <li>Sui test basta mokkare l'event service</li>
                     </ul>
 
-                    <div class="font-semibold text-l mt-2">Problema:</div>
+                    <div class="font-semibold text-l mt-2">Rimane il problema:</div>
                     Ma come leggo la risposta dell'utente?
                </div>
               <div class="card">

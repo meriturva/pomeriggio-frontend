@@ -50,6 +50,7 @@ export class InfoPage {
 }`;
 
     protected appendRoutesCode = `public appendRoutes() {
+    // Aggiunge le rotte alla configurazione corrente, ma non funziona come previsto
     const routerConfig = this._router.config;
     routerConfig.push(
         { path: 'info1', component: InfoPage },
