@@ -16,7 +16,12 @@ import { EventsService } from '../../event.service';
                         <code [highlight]="eventServiceCode" language="ts" lineNumbers></code>
                     </pre>
 
-                    <div class="font-semibold text-l mt-2">App component:</div>
+                    <div class="font-semibold text-l mt-2">App component template:</div>
+                    <pre>
+                        <code [highlight]="appTemplateCode" language="html" lineNumbers></code>
+                    </pre>
+
+                    <div class="font-semibold text-l mt-2">App component code:</div>
                     <pre>
                         <code [highlight]="appComponentCode" language="ts" lineNumbers></code>
                     </pre>
@@ -28,9 +33,10 @@ import { EventsService } from '../../event.service';
 
                     <div class="font-semibold text-l mt-2">Vantaggi:</div>
                     <ul>
-                        <li>Dialog riutilizzabile in più componenti</li>
+                        <li>Dialog solo su un componente</li>
                         <li>Dialog non legato ad una pagina specifica</li>
                         <li>Non importo il modulo DialogModule in ogni componente</li>
+                        <li>Sui test basta mokkare l'event service</li>
                     </ul>
                </div>
               <div class="card">
@@ -54,6 +60,14 @@ export class EventsService {
      */
     public onCloseWaiter: EventEmitter<void> = new EventEmitter();
 }
+`;
+
+    protected appTemplateCode = `<p-dialog header="Loading" [modal]="true"  [closable]="false" [visible]="waiterVisible()" class="text-center">
+    <p>Sto caricando tanti dati!</p>
+    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+</p-dialog>
+<p-confirmdialog />
+<router-outlet></router-outlet>
 `;
 
     protected appComponentCode = `private readonly _eventsService = inject(EventsService);

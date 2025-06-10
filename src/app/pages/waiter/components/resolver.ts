@@ -40,7 +40,8 @@ export default [
         this._eventsService.onShowWaiter.emit();
     }
 
-    if (routerEvent instanceof NavigationEnd ||
+    if (routerEvent instanceof ResolveEnd ||
+        routerEvent instanceof NavigationEnd ||
         routerEvent instanceof NavigationCancel ||
         routerEvent instanceof NavigationError) {
         this._eventsService.onCloseWaiter.emit();

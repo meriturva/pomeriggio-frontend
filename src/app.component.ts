@@ -1,6 +1,6 @@
 import { Component, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { NavigationCancel, NavigationEnd, NavigationError, ResolveStart, Router, RouterModule } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationError, ResolveEnd, ResolveStart, Router, RouterModule } from '@angular/router';
 import { DialogModule } from 'primeng/dialog';
 import { EventsService } from './app/pages/event.service';
 import { ConfirmationService } from 'primeng/api';
@@ -73,7 +73,8 @@ export class AppComponent {
                 this._eventsService.onShowWaiter.emit();
             }
 
-            if (routerEvent instanceof NavigationEnd ||
+            if (routerEvent instanceof ResolveEnd ||
+                routerEvent instanceof NavigationEnd ||
                 routerEvent instanceof NavigationCancel ||
                 routerEvent instanceof NavigationError) {
                 this._eventsService.onCloseWaiter.emit();
